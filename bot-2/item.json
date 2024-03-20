@@ -1,0 +1,410 @@
+{
+    "579618807237312512": [
+        {
+            "trans": 5,
+            "nick": 7,
+            "role": 7,
+            "add_role": 8,
+            "protect": true,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "917020721144803368": [
+        {
+            "trans": 3,
+            "nick": 4,
+            "role": 4,
+            "add_role": 13,
+            "protect": true,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "483642198290595851": [
+        {
+            "trans": 14,
+            "nick": 0,
+            "role": 0,
+            "add_role": 0,
+            "protect": true,
+            "lottery": true,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "262568696608849920": [
+        {
+            "trans": 1,
+            "nick": 2,
+            "role": 0,
+            "add_role": 0,
+            "protect": true,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "968026956367015976": [
+        {
+            "trans": 2,
+            "nick": 4,
+            "role": 7,
+            "add_role": 6,
+            "protect": true,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "548840830169907221": [
+        {
+            "trans": 7,
+            "nick": 12,
+            "role": 11,
+            "add_role": 13,
+            "protect": true,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "998882287829663794": [
+        {
+            "trans": 99960,
+            "nick": 99992,
+            "role": 99995,
+            "add_role": 99995,
+            "protect": true,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "603205019268939786": [
+        {
+            "trans": 11,
+            "nick": 7,
+            "role": 8,
+            "add_role": 8,
+            "protect": true,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "1116621483993731253": [
+        {
+            "trans": 0,
+            "nick": 2,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "567706810509819922": [
+        {
+            "trans": 7,
+            "nick": 1,
+            "role": 1,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "840880287672172544": [
+        {
+            "trans": 0,
+            "nick": 2,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "1137687226399080459": [
+        {
+            "trans": 1,
+            "nick": 2,
+            "role": 0,
+            "add_role": 2,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "745957491636174918": [
+        {
+            "trans": 1,
+            "nick": 5,
+            "role": 1,
+            "add_role": 1,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "871335275287158804": [
+        {
+            "trans": 0,
+            "nick": 2,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "759633608246820957": [
+        {
+            "trans": 0,
+            "nick": 2,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "923050556753313874": [
+        {
+            "trans": 0,
+            "nick": 2,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "1193890223168422030": [
+        {
+            "trans": 0,
+            "nick": 2,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "1197181080676089879": [
+        {
+            "trans": 0,
+            "nick": 2,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "359014576542449674": [
+        {
+            "trans": 0,
+            "nick": 2,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "1197181408238637217": [
+        {
+            "trans": 0,
+            "nick": 2,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "357364484102422528": [
+        {
+            "trans": 0,
+            "nick": 2,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "1131638435191476305": [
+        {
+            "trans": 0,
+            "nick": 0,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "830335521271578624": [
+        {
+            "trans": 0,
+            "nick": 98,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "1014773971364872242": [
+        {
+            "trans": 0,
+            "nick": 0,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "1209744598650323035": [
+        {
+            "trans": 0,
+            "nick": 0,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "596242217203662849": [
+        {
+            "trans": 0,
+            "nick": 0,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "1209777265391570978": [
+        {
+            "trans": 0,
+            "nick": 0,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "808253081430392883": [
+        {
+            "trans": 0,
+            "nick": 0,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "599600665005654019": [
+        {
+            "trans": 0,
+            "nick": 0,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "1121139680881164379": [
+        {
+            "trans": 0,
+            "nick": 0,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "1188518513615327324": [
+        {
+            "trans": 0,
+            "nick": 0,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "725846103530012773": [
+        {
+            "trans": 0,
+            "nick": 0,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "561032574613454848": [
+        {
+            "trans": 0,
+            "nick": 0,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ],
+    "359952775909474304": [
+        {
+            "trans": 0,
+            "nick": 0,
+            "role": 0,
+            "add_role": 0,
+            "protect": false,
+            "lottery": false,
+            "role_tem": null,
+            "role_date": null
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "579618807237312512": [
+        {
+            "item_id": 14,
+            "item_name": "增加身分組卡",
+            "price": 500,
+            "quantity": 1,
+            "sold": false
+        }
+    ],
+    "917020721144803368": [
+        {
+            "item_id": 2,
+            "item_name": "增加身分組卡",
+            "price": 1500,
+            "quantity": 1,
+            "sold": false
+        }
+    ],
+    "567706810509819922": [
+        {
+            "item_id": 4,
+            "item_name": "指定暱稱卡",
+            "price": 1000,
+            "quantity": 2,
+            "sold": true
+        }
+    ],
+    "483642198290595851": [
+        {
+            "item_id": 5,
+            "item_name": "增加身分組卡",
+            "price": 3500,
+            "quantity": 1,
+            "sold": false
+        },
+        {
+            "item_id": 6,
+            "item_name": "增加身分組卡",
+            "price": 3500,
+            "quantity": 1,
+            "sold": false
+        }
+    ],
+    "998882287829663794": []
+}
