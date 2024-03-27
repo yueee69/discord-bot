@@ -1,5 +1,3 @@
-﻿# -*- coding: utf-8 -*-
-# Author: Eduardo Borges
 import json
 import discord
 from discord.ext import commands,tasks
@@ -118,12 +116,13 @@ sell = {
 
 async def check_voice_channels():
  while True:
-  with open('user.json', 'r') as user_file, open('date.json', 'r') as date_file, open('item.json', 'r') as item_file,open('shop.json', 'r', encoding='utf-8') as file,open('product.json','r',encoding='utf-8') as file1:
+  with open('user.json', 'r') as user_file, open('date.json', 'r') as date_file, open('item.json', 'r') as item_file,open('shop.json', 'r', encoding='utf-8') as file,open('product.json','r',encoding='utf-8') as file1,open('afk.json','r',encoding='utf-8') as file2:
    data = json.load(user_file)
    Data = json.load(date_file)
    item = json.load (item_file)
    shop = json.load(file)
    goods = json.load(file1) 
+   afk = json.load(file2)
 
   if datetime.utcnow().replace(tzinfo=pytz.utc).astimezone(pytz.timezone('Asia/Taipei')).day != Data[0]["today"]:
    for entry in data:
@@ -149,12 +148,19 @@ async def check_voice_channels():
             products.remove(product)
    Data[0]["today"]= datetime.utcnow().replace(tzinfo=pytz.utc).astimezone(pytz.timezone('Asia/Taipei')).day
 
-
+  
   for guild in bot.guilds:
    for channel in guild.voice_channels:
     members_in_channel = [member for member in channel.members]
     if len(members_in_channel) > 1:
-     for member in members_in_channel:
+     for member in members_in_channel:  
+      for user_id, dat in afk.items():   
+        if user_id == str(member.id):
+            if dat["afk_time"] >= 100:
+                dat["afk_time"] -= 100
+            else:
+                dat["afk_time"] = 0
+
       if any(entry["user_id"] == str(member.id) for entry in data):
        for entry in data:
         if entry["user_id"] == str(member.id):
@@ -172,13 +178,17 @@ async def check_voice_channels():
             entry["voice"] += 30
             entry["coin"] += 30
             entry["lvl"] = int(entry["gain"]/1500)
+  
+  for user_id, d in afk.items():
+      d["afk_time"] += 1
 
-  with open('user.json', 'w') as user_file, open('date.json', 'w') as date_file , open('item.json', 'w') as item_file,open('shop.json', 'w' ,encoding='utf-8') as file,open('product.json', 'w',encoding='utf-8') as file1:
+  with open('user.json', 'w') as user_file, open('date.json', 'w') as date_file , open('item.json', 'w') as item_file,open('shop.json', 'w' ,encoding='utf-8') as file,open('product.json', 'w',encoding='utf-8') as file1,open('afk.json', 'w',encoding='utf-8') as file2:
    json.dump(data, user_file, indent=4)
    json.dump(Data, date_file, indent=4)
    json.dump(item, item_file, indent=4)
    json.dump(shop, file, indent=4, ensure_ascii=False)
    json.dump(goods, file1, indent=4,ensure_ascii=False)
+   json.dump(afk, file2, indent=4,ensure_ascii=False)
   await asyncio.sleep(60)
 
 @bot.event
@@ -195,6 +205,7 @@ async def on_ready():
     )
 )
     await check_voice_channels()
+    
 
 @bot.tree.command(name='抗性', description='計算物理或魔法抗性')
 @app_commands.describe(atk="面板物理/魔法攻擊力",playerlvl="角色等級",monsterlvl="怪物等級",rate="技能倍率(血淚1.9)",dmg="傷害",dtelight="是否對屬")
@@ -406,7 +417,7 @@ async def exchange(interaction: discord.Interaction, 陽壽:int):
 
 
 
-@bot.tree.command(name='用戶資訊1',description='確認你的資訊')
+@bot.tree.command(name='用戶資訊',description='確認你的資訊')
 async def coint(interaction: discord.Interaction):
  with open('user.json', 'r') as file , open('history.json', 'r', encoding='utf-8') as file1:
     data = json.load(file)
@@ -440,7 +451,7 @@ async def coint(interaction: discord.Interaction):
      }
     data.append(new_data)
     history[str(interaction.user.id)] = [None]
-    history[str(interaction.user.id)][0] = {f"prize{i}": None for i in range(1, 11)}
+    history[str(interaction.user.id)][0] = {f"prize{i}": None for i in range(1, 101)}
     embed = discord.Embed(title="__𝗥𝗲𝘀𝘂𝗹𝘁__", description=f"{interaction.user.mention}已完成登記！")
     await interaction.response.send_message(embed=embed)
     with open('user.json', 'w') as file , open('history.json', 'w') as file1:
@@ -1430,8 +1441,8 @@ async def add_product(interaction:discord.Interaction):
         view.add_item(select)
         await interaction.response.send_message(view=view,ephemeral=True)
 
-@bot.tree.command(name="板子",description=" ")
-async def board(interaction:discord.Integration):
+@bot.tree.command(name="板子",description="/")
+async def board(interaction:discord.Interaction):
     if interaction.user.id != 579618807237312512:
         return
 
@@ -1548,26 +1559,52 @@ def create_embed(all_products, page_number):
     
     return embed
 
-@bot.event#根據字數加分
+@bot.event
 async def on_message(message):
-    with open('user.json', 'r') as file:
-       data = json.load(file)
+    with open('user.json', 'r') as file, open('afk.json', 'r', encoding='utf-8') as file1:
+        data = json.load(file)
+        afk = json.load(file1)
+
+    for user_id, afk_data in afk.items():   
+        if user_id == str(message.author.id):
+            if afk_data["afk_time"] - len(message.content) * 5 >= 0:
+                afk_data["afk_time"] -= len(message.content) * 5
+            else:
+                afk_data["afk_time"] = 0
+
+    if message.content == '!afk':
+        content = []
+        print(message.author.id)
+        for user_id, afk_data in afk.items():
+            if afk_data["afk_time"] >= 21600:
+                content.append(f'名稱: {afk_data["display_name"]} ({afk_data["name"]})\n下潛時間: {afk_data["afk_time"]} (分鐘)\n--------------------\n')
+        if len(content) == 0:
+            await message.reply('無不活躍成員！')
+        else:
+            await message.reply(''.join(content))
+
     coin = len(re.sub(re.compile(r'<:\w+:\d+>'), '', message.content)) + len(re.findall(re.compile(r'<:\w+:\d+>'), message.content))
     if any(entry["user_id"] == str(message.author.id) for entry in data):
-      for entry in data:
-        if entry["user_id"] == str(message.author.id):
-           entry["coin"] += coin
-           entry["gain"] += coin
-           entry["chat"] += coin
-           if (int(entry["gain"]/1500) != entry["lvl"]):
-               entry["lvl"] = int(entry["gain"]/1500)
-    with open('user.json', 'w') as file:
-       json.dump(data, file, indent=4)
+        for entry in data:
+            if entry["user_id"] == str(message.author.id):
+                entry["coin"] += coin
+                entry["gain"] += coin
+                entry["chat"] += coin
+                if (int(entry["gain"] / 1500) != entry["lvl"]):
+                    entry["lvl"] = int(entry["gain"] / 1500)
+    with open('user.json', 'w') as file, open('afk.json', 'w', encoding='utf-8') as file1:
+        json.dump(data, file, indent=4)
+        json.dump(afk, file1, indent=4, ensure_ascii=False)
 
 @bot.event#根據刪除的訊息扣分
 async def on_message_delete(message):
-    with open('user.json', 'r') as file:
+    with open('user.json', 'r') as file,open('afk.json','r',encoding='utf-8') as file1:
        data = json.load(file)
+       afk = json.load(file1)
+
+    for user_id, dat in afk.items():
+        if user_id == str(message.author.id):
+            dat["afk_time"] += len(message.content)*5
     coin = len(re.sub(re.compile(r'<:\w+:\d+>'), '', message.content)) + len(re.findall(re.compile(r'<:\w+:\d+>'), message.content))
     if any(entry["user_id"] == str(message.author.id) for entry in data):
       for entry in data:
@@ -1577,8 +1614,9 @@ async def on_message_delete(message):
            entry["chat"] -= coin
            if (int(entry["gain"]/1500)!= entry["lvl"]):
                 entry["lvl"] = int(entry["gain"]/1500)
-    with open('user.json', 'w') as file:
+    with open('user.json', 'w') as file,open('afk.json', 'w',encoding='utf-8') as file1:
        json.dump(data, file, indent=4)
+       json.dump(afk, file1, indent=4,ensure_ascii=False)
 
 @bot.event#根據編輯訊息改分
 async def on_message_edit(before,after):
@@ -1597,5 +1635,29 @@ async def on_message_edit(before,after):
                 entry["lvl"] = int(entry["gain"]/1500)
     with open('user.json', 'w') as file:
        json.dump(data, file, indent=4)
+
+@bot.event#改暱稱監聽
+async def on_member_update(before, after):
+    if before.nick != after.nick:
+        with open('afk.json', 'r', encoding='utf-8') as file:
+            afk = json.load(file)
+        for user_id, data in afk.items():
+            if data["display_name"] == (before.nick or before.display_name):
+                data["display_name"] = after.nick or after.name
+        with open('afk.json', 'w', encoding='utf-8') as file:
+            json.dump(afk, file, indent=4, ensure_ascii=False)
+
+@bot.event#加群組加入json
+async def on_member_join(member):
+    with open('afk.json', 'r', encoding='utf-8-sig') as file:
+        afk = json.load(file)
+    afk[str(member.id)]={
+        "name":member.name,
+        "display_name":member.display_name,
+        "afk_time":0
+        }
+    with open('afk.json', 'w', encoding='utf-8-sig') as file:
+            json.dump(afk, file, indent=4, ensure_ascii=False)
+
 
 bot.run(token='token')
