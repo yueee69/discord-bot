@@ -25,9 +25,6 @@ SPOTIFY_TRACK_REGEX = re.compile(r'https://open\.spotify\.com/track/(\w+)')
 SPOTIFY_PLAYLIST_REGEX = re.compile(r'https://open\.spotify\.com/playlist/(\w+)')
 MBPLAYER_REGEX = re.compile(r'(https?://)?(www\.)?mbplayer\.com/list/\d+')
 
-youtube_dl.utils.bug_reports_message = lambda: ''
-sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id='1e5248d8ffbf4327a2142198e1b04418', client_secret='fd73b546815442d382b9ab1f02198f79'))
-
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='!',intents=intents)
 
