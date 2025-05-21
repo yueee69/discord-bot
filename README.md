@@ -128,8 +128,6 @@ python bot_2.py
 * `pytz` 與 `datetime` 做每日更新與排程
 * `json` 本地存檔，不使用資料庫
 
-如需貢獻或客製化設計，請自由 Fork 並 Pull Request！
-
 ---
 
 ## 🙋‍♂️ 特別感謝
